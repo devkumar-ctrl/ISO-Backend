@@ -1,0 +1,712 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "isoStandard": "ISO/IEC 27001:2022",
+    "totalBaseQuestions": 80,
+    "estimatedQuestions": {
+      "quick": 25,
+      "detailed": 60
+    },
+    "modes": {
+      "quick": "Critical questions only (~25)",
+      "detailed": "Full assessment (~60)"
+    }
+  },
+  "clauses": {
+    "clause_4": {
+      "id": "clause_4",
+      "title": "Context of the Organization",
+      "description": "Understanding the organization and its context",
+      "blocks": ["context_block"]
+    },
+    "clause_5": {
+      "id": "clause_5",
+      "title": "Leadership",
+      "description": "Leadership and commitment",
+      "blocks": ["leadership_block", "policy_block"]
+    },
+    "clause_6": {
+      "id": "clause_6",
+      "title": "Planning",
+      "description": "Planning to address risks and opportunities",
+      "blocks": ["risk_block"]
+    },
+    "clause_7": {
+      "id": "clause_7",
+      "title": "Support",
+      "description": "Support and resources",
+      "blocks": ["support_block", "cloud_block"]
+    },
+    "clause_8": {
+      "id": "clause_8",
+      "title": "Operation",
+      "description": "Operation and operational planning",
+      "blocks": ["operation_block", "vendor_block", "remote_work_block"]
+    },
+    "clause_9": {
+      "id": "clause_9",
+      "title": "Performance Evaluation",
+      "description": "Monitoring and review",
+      "blocks": ["monitoring_block", "policy_maturity_block"]
+    }
+  },
+  "blocks": {
+    "base_block": {
+      "block_id": "base_block",
+      "description": "Core organizational questions",
+      "priority": "base",
+      "questions": [
+        "q4_001", "q4_002", "q4_003",
+        "q5_001", "q5_002",
+        "q6_001",
+        "q7_001", "q7_002",
+        "q8_001"
+      ],
+      "show_if": {},
+      "skip_if": {}
+    },
+    "context_block": {
+      "block_id": "context_block",
+      "description": "Context of the Organization (Clause 4)",
+      "priority": "base",
+      "questions": [
+        "q4_001", "q4_002", "q4_003", "q4_004"
+      ],
+      "show_if": {},
+      "skip_if": {}
+    },
+    "leadership_block": {
+      "block_id": "leadership_block",
+      "description": "Leadership commitment (Clause 5)",
+      "priority": "base",
+      "questions": [
+        "q5_001", "q5_002", "q5_003"
+      ],
+      "show_if": {},
+      "skip_if": {}
+    },
+    "policy_block": {
+      "block_id": "policy_block",
+      "description": "Information Security Policies",
+      "priority": "conditional",
+      "questions": [
+        "q5_004", "q5_005", "q5_006"
+      ],
+      "show_if": {
+        "q5_002": "Yes - Documented"
+      },
+      "skip_if": {}
+    },
+    "risk_block": {
+      "block_id": "risk_block",
+      "description": "Risk Assessment and Treatment (Clause 6)",
+      "priority": "base",
+      "questions": [
+        "q6_001", "q6_002", "q6_003", "q6_004", "q6_005"
+      ],
+      "show_if": {},
+      "skip_if": {}
+    },
+    "support_block": {
+      "block_id": "support_block",
+      "description": "Support and Resources (Clause 7)",
+      "priority": "base",
+      "questions": [
+        "q7_001", "q7_002", "q7_003"
+      ],
+      "show_if": {},
+      "skip_if": {}
+    },
+    "cloud_block": {
+      "block_id": "cloud_block",
+      "description": "Cloud Services and Infrastructure",
+      "priority": "conditional",
+      "questions": [
+        "q7_004", "q7_005", "q8_002"
+      ],
+      "show_if": {
+        "q7_004": "Yes"
+      },
+      "skip_if": {
+        "q7_004": "No"
+      }
+    },
+    "operation_block": {
+      "block_id": "operation_block",
+      "description": "Operational Controls (Clause 8)",
+      "priority": "base",
+      "questions": [
+        "q8_001", "q8_003", "q8_004"
+      ],
+      "show_if": {},
+      "skip_if": {}
+    },
+    "vendor_block": {
+      "block_id": "vendor_block",
+      "description": "Third-party Vendor Management",
+      "priority": "conditional",
+      "questions": [
+        "q8_005", "q8_006", "q8_007"
+      ],
+      "show_if": {
+        "q8_005": "Yes"
+      },
+      "skip_if": {
+        "q8_005": "No"
+      }
+    },
+    "remote_work_block": {
+      "block_id": "remote_work_block",
+      "description": "Remote Work and Flexible Arrangements",
+      "priority": "conditional",
+      "questions": [
+        "q8_008", "q8_009"
+      ],
+      "show_if": {
+        "q8_008": "Yes"
+      },
+      "skip_if": {
+        "q8_008": "No"
+      }
+    },
+    "monitoring_block": {
+      "block_id": "monitoring_block",
+      "description": "Performance Evaluation (Clause 9)",
+      "priority": "base",
+      "questions": [
+        "q9_001", "q9_002", "q9_003"
+      ],
+      "show_if": {},
+      "skip_if": {}
+    },
+    "policy_maturity_block": {
+      "block_id": "policy_maturity_block",
+      "description": "Policy Maturity and Monitoring",
+      "priority": "conditional",
+      "questions": [
+        "q9_004", "q9_005"
+      ],
+      "show_if": {
+        "q5_002": "Yes - Documented"
+      },
+      "skip_if": {}
+    },
+    "high_risk_block": {
+      "block_id": "high_risk_block",
+      "description": "High-risk Additional Questions",
+      "priority": "risk",
+      "questions": [
+        "q6_risk_001", "q6_risk_002", "q8_risk_001"
+      ],
+      "show_if": {
+        "q_risk_trigger": true
+      },
+      "skip_if": {}
+    },
+    "technical_security_block": {
+      "block_id": "technical_security_block",
+      "description": "Technical Security Controls",
+      "priority": "risk",
+      "questions": [
+        "q8_tech_001", "q8_tech_002", "q8_tech_003"
+      ],
+      "show_if": {
+        "q8_tech_trigger": true
+      },
+      "skip_if": {}
+    }
+  },
+  "questions": {
+    "q4_001": {
+      "id": "q4_001",
+      "clause": "clause_4",
+      "section": "Context",
+      "question": "What is the primary nature of your organization?",
+      "type": "single_choice",
+      "options": ["Technology/SaaS", "Finance/Banking", "Healthcare", "Manufacturing", "Retail/E-commerce", "Government", "Education", "Other"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q4_002": {
+      "id": "q4_002",
+      "clause": "clause_4",
+      "section": "Context",
+      "question": "How many employees does your organization have?",
+      "type": "single_choice",
+      "options": ["1-10", "11-50", "51-200", "201-500", "500+"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q4_003": {
+      "id": "q4_003",
+      "clause": "clause_4",
+      "section": "Context",
+      "question": "Does your organization operate in multiple countries?",
+      "type": "single_choice",
+      "options": ["Yes", "No", "Planning to"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q4_004": {
+      "id": "q4_004",
+      "clause": "clause_4",
+      "section": "Context",
+      "question": "Are internal and external issues affecting ISMS documented?",
+      "type": "single_choice",
+      "options": ["Yes - Fully", "Yes - Partially", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q5_001": {
+      "id": "q5_001",
+      "clause": "clause_5",
+      "section": "Leadership",
+      "question": "Is there a designated person responsible for information security?",
+      "type": "single_choice",
+      "options": ["Yes - CISO", "Yes - IT Manager", "Yes - Dual role", "No - Not designated", "Planning to appoint"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 3
+    },
+    "q5_002": {
+      "id": "q5_002",
+      "clause": "clause_5",
+      "section": "Leadership",
+      "question": "Do you have documented information security policies?",
+      "type": "single_choice",
+      "options": ["Yes - Documented", "Yes - Informal", "In development", "No"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {
+        "policy_block": { "operator": "equals", "value": "Yes - Documented" },
+        "q_risk_trigger": { "operator": "equals", "value": "No" }
+      },
+      "risk_weight": 2
+    },
+    "q5_003": {
+      "id": "q5_003",
+      "clause": "clause_5",
+      "section": "Leadership",
+      "question": "Does management communicate security expectations to employees?",
+      "type": "single_choice",
+      "options": ["Yes - Regular", "Sometimes", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q5_004": {
+      "id": "q5_004",
+      "clause": "clause_5",
+      "section": "Leadership",
+      "question": "When were your security policies last reviewed?",
+      "type": "single_choice",
+      "options": ["Within 6 months", "6-12 months ago", "1-2 years ago", "Over 2 years ago", "Never reviewed"],
+      "show_if": { "q5_002": "Yes - Documented" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q5_005": {
+      "id": "q5_005",
+      "clause": "clause_5",
+      "section": "Leadership",
+      "question": "Are policies approved by top management?",
+      "type": "single_choice",
+      "options": ["Yes - Always", "Sometimes", "No", "Not sure"],
+      "show_if": { "q5_002": "Yes - Documented" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q5_006": {
+      "id": "q5_006",
+      "clause": "clause_5",
+      "section": "Leadership",
+      "question": "Do employees acknowledge reading and understanding policies?",
+      "type": "single_choice",
+      "options": ["Yes - Formal process", "Informal", "No", "Not sure"],
+      "show_if": { "q5_002": "Yes - Documented" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q6_001": {
+      "id": "q6_001",
+      "clause": "clause_6",
+      "section": "Planning",
+      "question": "Have you conducted a formal information security risk assessment?",
+      "type": "single_choice",
+      "options": ["Yes - Within 12 months", "Yes - Over 12 months ago", "In progress", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {
+        "q_risk_trigger": { "operator": "equals", "value": "No" }
+      },
+      "risk_weight": 3
+    },
+    "q6_002": {
+      "id": "q6_002",
+      "clause": "clause_6",
+      "section": "Planning",
+      "question": "How do you identify information security risks?",
+      "type": "multi_choice",
+      "options": ["Annual assessment", "Continuous monitoring", "Incident feedback", "Third-party audit", "Not formalized"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q6_003": {
+      "id": "q6_003",
+      "clause": "clause_6",
+      "section": "Planning",
+      "question": "Do you have a risk treatment plan (Statement of Applicability)?",
+      "type": "single_choice",
+      "options": ["Yes - Complete", "Yes - Partial", "In development", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q6_004": {
+      "id": "q6_004",
+      "clause": "clause_6",
+      "section": "Planning",
+      "question": "What is your approach to treating information security risks?",
+      "type": "single_choice",
+      "options": ["Formal risk treatment process", "Ad-hoc addressing", "Insurance only", "No formal approach"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q6_005": {
+      "id": "q6_005",
+      "clause": "clause_6",
+      "section": "Planning",
+      "question": "Do you accept certain risks as acceptable with management sign-off?",
+      "type": "single_choice",
+      "options": ["Yes - with documentation", "Yes - informal", "No - mitigate all", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q7_001": {
+      "id": "q7_001",
+      "clause": "clause_7",
+      "section": "Support",
+      "question": "Are employees required to complete security awareness training?",
+      "type": "single_choice",
+      "options": ["Yes - Annual", "Yes - Occasional", "No", "Planning to implement"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q7_002": {
+      "id": "q7_002",
+      "clause": "clause_7",
+      "section": "Support",
+      "question": "Is there dedicated budget for information security?",
+      "type": "single_choice",
+      "options": ["Yes - Dedicated", "Yes - Part of IT budget", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q7_003": {
+      "id": "q7_003",
+      "clause": "clause_7",
+      "section": "Support",
+      "question": "Are security roles and responsibilities defined?",
+      "type": "single_choice",
+      "options": ["Yes - Fully documented", "Partially", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q7_004": {
+      "id": "q7_004",
+      "clause": "clause_7",
+      "section": "Support",
+      "question": "Do you use cloud services (AWS, Azure, GCP)?",
+      "type": "single_choice",
+      "options": ["Yes", "No", "Planning to"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q7_005": {
+      "id": "q7_005",
+      "clause": "clause_7",
+      "section": "Support",
+      "question": "Do you have cloud security configurations documented?",
+      "type": "single_choice",
+      "options": ["Yes - Documented", "Yes - Partial", "No", "Not sure"],
+      "show_if": { "q7_004": "Yes" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q8_001": {
+      "id": "q8_001",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Is there operational planning and control?",
+      "type": "single_choice",
+      "options": ["Yes - Documented", "Yes - Informal", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q8_002": {
+      "id": "q8_002",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Is there change management process?",
+      "type": "single_choice",
+      "options": ["Yes - Formal", "Yes - Informal", "No", "Not sure"],
+      "show_if": { "q7_004": "Yes" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q8_003": {
+      "id": "q8_003",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Is there vendor/third-party management process?",
+      "type": "single_choice",
+      "options": ["Yes - Documented", "Yes - Informal", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q8_004": {
+      "id": "q8_004",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Is there asset management (inventory)?",
+      "type": "single_choice",
+      "options": ["Yes - Complete", "Yes - Partial", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q8_005": {
+      "id": "q8_005",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Do you engage third-party vendors?",
+      "type": "single_choice",
+      "options": ["Yes", "No", "Planning to"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {
+        "vendor_block": { "operator": "equals", "value": "Yes" }
+      },
+      "risk_weight": 1
+    },
+    "q8_006": {
+      "id": "q8_006",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Do vendors go through security assessment?",
+      "type": "single_choice",
+      "options": ["Yes - Formal", "Yes - Ad-hoc", "No", "Not sure"],
+      "show_if": { "q8_005": "Yes" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q8_007": {
+      "id": "q8_007",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Are vendor contracts include security clauses?",
+      "type": "single_choice",
+      "options": ["Yes - Always", "Sometimes", "No", "Not sure"],
+      "show_if": { "q8_005": "Yes" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q8_008": {
+      "id": "q8_008",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Do you allow remote work?",
+      "type": "single_choice",
+      "options": ["Yes", "No", "Planning to"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {
+        "remote_work_block": { "operator": "equals", "value": "Yes" }
+      },
+      "risk_weight": 1
+    },
+    "q8_009": {
+      "id": "q8_009",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Is there a remote work security policy?",
+      "type": "single_choice",
+      "options": ["Yes - Documented", "Yes - Informal", "No", "Not sure"],
+      "show_if": { "q8_008": "Yes" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q9_001": {
+      "id": "q9_001",
+      "clause": "clause_9",
+      "section": "Monitoring",
+      "question": "Is there security monitoring and measurement?",
+      "type": "single_choice",
+      "options": ["Yes - Regular", "Occasionally", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q9_002": {
+      "id": "q9_002",
+      "clause": "clause_9",
+      "section": "Monitoring",
+      "question": "Is there internal audit process?",
+      "type": "single_choice",
+      "options": ["Yes - Regular", "Occasionally", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 2
+    },
+    "q9_003": {
+      "id": "q9_003",
+      "clause": "clause_9",
+      "section": "Monitoring",
+      "question": "Is there management review meetings?",
+      "type": "single_choice",
+      "options": ["Yes - Regular", "Occasionally", "No", "Not sure"],
+      "show_if": {},
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q9_004": {
+      "id": "q9_004",
+      "clause": "clause_9",
+      "section": "Monitoring",
+      "question": "How often is security performance reviewed?",
+      "type": "single_choice",
+      "options": ["Monthly", "Quarterly", "Annually", "Rarely"],
+      "show_if": { "q5_002": "Yes - Documented" },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 1
+    },
+    "q9_005": {
+      "id": "q9_005",
+      "clause": "clause_9",
+      "section": "Monitoring",
+      "question": "Are there regular penetration tests?",
+      "type": "single_choice",
+      "options": ["Yes - Annual", "Occasionally", "No", "Planning"],
+      "show_if": { "q5_002": "Yes - Documented" },
+      "skip_if": {},
+      "triggers": {
+        "q8_tech_trigger": { "operator": "equals", "value": "No" }
+      },
+      "risk_weight": 2
+    },
+    "q6_risk_001": {
+      "id": "q6_risk_001",
+      "clause": "clause_6",
+      "section": "Risk",
+      "question": "What is the likelihood of cyber attack?",
+      "type": "single_choice",
+      "options": ["High", "Medium", "Low", "Not sure"],
+      "show_if": { "q_risk_trigger": true },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 0
+    },
+    "q6_risk_002": {
+      "id": "q6_risk_002",
+      "clause": "clause_6",
+      "section": "Risk",
+      "question": "What would be the impact of a data breach?",
+      "type": "single_choice",
+      "options": ["Critical", "High", "Medium", "Low"],
+      "show_if": { "q_risk_trigger": true },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 0
+    },
+    "q8_risk_001": {
+      "id": "q8_risk_001",
+      "clause": "clause_8",
+      "section": "Operation",
+      "question": "Have you experienced a security incident in the past?",
+      "type": "single_choice",
+      "options": ["Yes - Multiple", "Yes - Once", "No", "Not sure"],
+      "show_if": { "q_risk_trigger": true },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 0
+    },
+    "q8_tech_001": {
+      "id": "q8_tech_001",
+      "clause": "clause_8",
+      "section": "Technical",
+      "question": "Is there access control management?",
+      "type": "single_choice",
+      "options": ["Yes - Documented", "Yes - Informal", "No", "Not sure"],
+      "show_if": { "q8_tech_trigger": true },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 0
+    },
+    "q8_tech_002": {
+      "id": "q8_tech_002",
+      "clause": "clause_8",
+      "section": "Technical",
+      "question": "Is there cryptographic control (encryption)?",
+      "type": "single_choice",
+      "options": ["Yes - Documented", "Yes - Partial", "No", "Not sure"],
+      "show_if": { "q8_tech_trigger": true },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 0
+    },
+    "q8_tech_003": {
+      "id": "q8_tech_003",
+      "clause": "clause_8",
+      "section": "Technical",
+      "question": "Is there physical security controls?",
+      "type": "single_choice",
+      "options": ["Yes - Comprehensive", "Yes - Basic", "No", "Not sure"],
+      "show_if": { "q8_tech_trigger": true },
+      "skip_if": {},
+      "triggers": {},
+      "risk_weight": 0
+    }
+  }
+}
