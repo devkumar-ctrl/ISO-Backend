@@ -42,9 +42,10 @@ dotenv.config()
 const app = express()
 app.disable('x-powered-by')
 
-const allowedOrigins = (process.env.CORS_ALLOWED_ORIGINS || 'https://iso27.netlify.app/')
+const normalizeOrigin = (origin) => String(origin || '').trim().replace(/\/+$|^\s+|\s+$/g, '')
+const allowedOrigins = (process.env.CORS_ALLOWED_ORIGINS || 'https://iso27.netlify.app,http://localhost:5173,http://localhost:3000')
   .split(',')
-  .map((origin) => origin.trim())
+  .map((origin) => normalizeOrigin(origin))
   .filter(Boolean)
 
 app.use(helmet({
@@ -54,8 +55,9 @@ app.use(helmet({
 app.use(hpp())
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true)
-    return callback(new Error('CORS blocked'))
+    const normalizedOrigin = normalizeOrigin(origin)
+    if (!origin || allowedOrigins.includes(normalizedOrigin)) return callback(null, true)
+    return callback(new Error(`CORS blocked: ${origin}`))
   },
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id', 'x-organization-id']
