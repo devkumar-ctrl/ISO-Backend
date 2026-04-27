@@ -41,6 +41,7 @@ dotenv.config()
 
 const app = express()
 app.disable('x-powered-by')
+app.set('trust proxy', process.env.TRUST_PROXY || 1)
 
 const normalizeOrigin = (origin) => String(origin || '').trim().replace(/\/+$|^\s+|\s+$/g, '')
 const allowedOrigins = (process.env.CORS_ALLOWED_ORIGINS || 'https://iso27.netlify.app,http://localhost:5173,http://localhost:3000')
