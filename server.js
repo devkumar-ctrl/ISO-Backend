@@ -42,7 +42,7 @@ dotenv.config()
 const app = express()
 app.disable('x-powered-by')
 
-const allowedOrigins = (process.env.CORS_ALLOWED_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173')
+const allowedOrigins = (process.env.CORS_ALLOWED_ORIGINS || 'https://iso27.netlify.app/')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean)
